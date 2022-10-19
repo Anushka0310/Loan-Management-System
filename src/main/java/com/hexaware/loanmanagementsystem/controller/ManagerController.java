@@ -1,5 +1,6 @@
 package com.hexaware.loanmanagementsystem.controller;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hexaware.loanmanagementsystem.entity.Manager;
+import com.hexaware.loanmanagementsystem.exception.ResourceNotFound;
 import com.hexaware.loanmanagementsystem.service.ManagerService;
 
 
@@ -26,7 +28,7 @@ public class ManagerController {
 	
 	@GetMapping("/getallmanager")
 	public List<Manager> getAllManager(){
-		return managerService.findAll();
+		return managerService.findAllManager();
 	}
 	
 	@PostMapping("/addmanager")
@@ -35,17 +37,17 @@ public class ManagerController {
 	}
 	
 	@DeleteMapping("/deletemanager/{manager_id}")
-	public void deleteManager(@PathVariable("manager_id") Long manager_id) {
+	public void deleteManager(@PathVariable("manager_id") Long manager_id) throws ResourceNotFound {
 		managerService.deleteById(manager_id) ;
 	}
 	
 	@GetMapping("/getmanager/{manager_id}")
-	public Manager getManager(@PathVariable("manager_id") Long manager_id) {
-		return managerService.findById(manager_id);
+	public Optional<Manager> getManager(@PathVariable("manager_id") Long manager_id) throws ResourceNotFound {
+		return managerService.getManagerById(manager_id);
 	}
 	
 	@PutMapping("/updatemanager/{manager_id}")
-	public String Update(@RequestBody Manager manager,@PathVariable("manager_id") Long manager_id) {
+	public String Update(@RequestBody Manager manager,@PathVariable("manager_id") Long manager_id) throws ResourceNotFound {
 		return managerService.update(manager, manager_id) + " Manager updated successfully";
 	}
 

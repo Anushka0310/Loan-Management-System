@@ -38,7 +38,7 @@ public class LoanDetailsController {
 	}
 	
 	@PostMapping("/addloandetails")
-	public String saveMovie(@RequestBody LoanDetails loandetails) {
+	public String saveLoanDetails(@RequestBody LoanDetails loandetails) {
 		return LoanDetailsService.save(loandetails) + "added successfully";
 	}
 	
@@ -52,7 +52,7 @@ public class LoanDetailsController {
 		return LoanDetailsService.getLoanById(loan_id);
 	}
 	
-	@PutMapping("/updateloandetails(loan_id}")
+	@PutMapping("/updateloandetails{loan_id}")
 	public String Update(@RequestBody LoanDetails loandetails,@PathVariable("loan_id") Long loan_id)throws ResourceNotFoundException {
 		return LoanDetailsService.LoanDetailsupdate(loandetails, loan_id) + " updated successfully";
 	}

@@ -11,6 +11,7 @@ import com.hexaware.loanmanagementsystem.exception.ResourceNotFound;
 import com.hexaware.loanmanagementsystem.repository.ManagerRepository;
 
 
+
 @Service
 public class ManagerServiceImpl implements ManagerService {
 	@Autowired
@@ -22,22 +23,22 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 
 	@Override
-	public Optional<Manager> getManagerById(Long manager_id) {
+	public Optional<Manager> getManagerById(Long manager_id) throws ResourceNotFound{
 		return null ;
 	}
 
 	@Override
-	public void deleteById(Long manager_id) {
+	public void deleteManagerById(Long manager_id)throws ResourceNotFound {
 		managerRepo.deleteById(manager_id);
 	}
 
 	@Override
-	public Manager save(Manager manager){
+	public Manager savemanager(Manager manager){
 		return managerRepo.save(manager);
 	}
 
 	@Override
-	public int update(Manager manager, Long manager_id) {
+	public int managerupdate(Manager manager, Long manager_id) throws ResourceNotFound{
 		return 0;
 	}
 

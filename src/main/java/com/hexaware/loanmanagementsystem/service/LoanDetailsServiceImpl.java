@@ -12,7 +12,7 @@ import com.hexaware.loanmanagementsystem.exception.ResourceNotFoundException;
 
 
 @Service
-public abstract class LoanDetailsServiceImpl implements LoanDetailsService{
+public  class LoanDetailsServiceImpl implements LoanDetailsService{
 	
 	@Autowired
 	LoanDetailsRepository loandetailsRepo;

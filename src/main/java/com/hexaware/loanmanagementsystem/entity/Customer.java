@@ -75,7 +75,8 @@ public class Customer {
 		this.loandetailsList = loandetailsList;
 	}
 
-	@OneToOne(cascade = CascadeType.ALL)
+	
+	@OneToOne(fetch =FetchType.EAGER,cascade = CascadeType.ALL)
 	@JoinColumn(name="customer_id_fk")
 	private LoanHistory loanhistory;
 	

@@ -32,7 +32,7 @@ public class LoanHistoryController {
 	}
 	
 	@PostMapping("/addloanhistory")
-	public String saveMovie(@RequestBody LoanHistory loanhistory) {
+	public String saveLoanHistory(@RequestBody LoanHistory loanhistory) {
 		return LoanHistoryService.save(loanhistory) + "added successfully";
 	}
 	
@@ -46,7 +46,7 @@ public class LoanHistoryController {
 		return LoanHistoryService.getLoanById(loan_id);
 	}
 	
-	@PutMapping("/updateloanhistory(loan_id}")
+	@PutMapping("/updateloanhistory{loan_id}")
 	public String Update(@RequestBody LoanHistory loanhistory,@PathVariable("loan_id") Long loan_id) throws ResourceNotFoundException {
 		return LoanHistoryService.LoanHistoryupdate(loanhistory, loan_id) + " updated successfully";
 		

@@ -54,6 +54,6 @@ public class LoanDetailsController {
 	
 	@PutMapping("/updateloandetails(loan_id}")
 	public String Update(@RequestBody LoanDetails loandetails,@PathVariable("loan_id") Long loan_id)throws ResourceNotFoundException {
-		return LoanDetailsService.update(loandetails, loan_id) + " updated successfully";
+		return LoanDetailsService.LoanDetailsupdate(loandetails, loan_id) + " updated successfully";
 	}
 }

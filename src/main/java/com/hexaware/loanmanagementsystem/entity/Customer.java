@@ -1,11 +1,24 @@
 package com.hexaware.loanmanagementsystem.entity;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+
+
 
 @Entity
+@Table(name= "customer")
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -41,6 +54,43 @@ public class Customer {
 	
 	@Column(name="customer_Income")
 	public String customer_Income;
+	
+	@OneToMany(fetch = FetchType.EAGER, cascade =CascadeType.ALL)
+	@JoinColumn(name="customer_id_fk",referencedColumnName="customer_id")
+	private List<LoanDetails> loandetailsList =new ArrayList<>();
+	
+	public List<LoanDetails> getStoryList() {
+		return loandetailsList;
+	}
+	
+	
+
+	public List<LoanDetails> getLoandetailsList() {
+		return loandetailsList;
+	}
+
+	
+
+	public void setLoandetailsList(List<LoanDetails> loandetailsList) {
+		this.loandetailsList = loandetailsList;
+	}
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="customer_id_fk")
+	private LoanHistory loanhistory;
+	
+
+	public LoanHistory getLoanhistory() {
+		return loanhistory;
+	}
+
+
+
+	public void setLoanhistory(LoanHistory loanhistory) {
+		this.loanhistory = loanhistory;
+	}
+
+
 
 	public Customer() {
 		// TODO Auto-generated constructor stub
@@ -154,3 +204,4 @@ public class Customer {
 	
 
 }
+

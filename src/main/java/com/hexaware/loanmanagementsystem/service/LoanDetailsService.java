@@ -13,5 +13,5 @@ public interface LoanDetailsService {
 
 	public void deleteById(Long loan_id)throws ResourceNotFoundException;;
 	public LoanDetails save(LoanDetails loandetails);
-	public int update(LoanDetails loandetaials,Long loan_id)throws ResourceNotFoundException;
+	public int LoanDetailsupdate(LoanDetails loandetaials,Long loan_id)throws ResourceNotFoundException;
 }

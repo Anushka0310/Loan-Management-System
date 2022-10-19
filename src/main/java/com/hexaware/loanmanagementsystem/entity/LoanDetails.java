@@ -1,7 +1,7 @@
 package com.hexaware.loanmanagementsystem.entity;
 
 
-import java.util.ArrayList;
+
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
@@ -40,9 +40,18 @@ import javax.persistence.Table;
 		@Column(name="loan_type")
 		public String loan_type;
 		
+		@OneToOne(fetch =FetchType.EAGER,cascade = CascadeType.ALL)
+		@JoinColumn(name="loan_id_fk")
+		private LoanHistory loanhistory;
 		
 		
 
+		public LoanHistory getLoanhistory() {
+			return loanhistory;
+		}
+		public void setLoanhistory(LoanHistory loanhistory) {
+			this.loanhistory = loanhistory;
+		}
 		public  LoanDetails() {
 			// TODO Auto-generated constructor stub
 		}
@@ -114,8 +123,8 @@ public LoanDetails(Long loan_id, String loan_status, Long loan_amount, Long loan
 			return "LoanDetails [loan_id=" + loan_id + ", loan_status=" + loan_status + ", loan_amount="
 					+ loan_amount + ",loan_term =" + loan_term + ",loan_date =" + loan_date
 					+ ", loan_type=" + loan_type + "]";}
+		
 	}
-	
 
 
 

@@ -11,9 +11,10 @@ public interface ManagerService {
 	
 	public List<Manager> findAllManager();
 	public Optional<Manager> getManagerById(Long manager_id)throws ResourceNotFound;
-	public void deleteById(Long manager_id)throws ResourceNotFound;
-	public Manager save(Manager manager);
-	public int update(Manager manager,Long manager_id)throws ResourceNotFound;
+	public void deleteManagerById(Long manager_id)throws ResourceNotFound;
+	public Manager savemanager(Manager manager);
+	public int managerupdate(Manager manager,Long manager_id)throws ResourceNotFound;
 
 	
 }
+

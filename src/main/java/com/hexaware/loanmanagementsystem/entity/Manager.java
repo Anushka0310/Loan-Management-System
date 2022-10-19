@@ -1,12 +1,22 @@
 package com.hexaware.loanmanagementsystem.entity;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 
 
 @Entity
+@Table(name = "manager")
 public class Manager {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,6 +32,18 @@ public class Manager {
 	
 	@Column(name="manager_phone")
 	public String manager_phone;
+	
+	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@JoinColumn(name="manager_id_fk",referencedColumnName = "manager_id")
+	private List<Customer> customerList = new ArrayList<>();
+	
+	public List<Customer> getStoryList() {
+		return customerList;
+	}
+
+	public void setCustomerList(List<Customer> customerList) {
+		this.customerList = customerList;
+	}
 
 	public Manager() {
 		super();

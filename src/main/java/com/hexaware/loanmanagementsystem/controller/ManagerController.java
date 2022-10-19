@@ -33,12 +33,12 @@ public class ManagerController {
 	
 	@PostMapping("/addmanager")
 	public String saveManager(@RequestBody Manager manager) {
-		return managerService.save(manager) + "Manager added Successfully";
+		return managerService.savemanager(manager) + "Manager added Successfully";
 	}
 	
 	@DeleteMapping("/deletemanager/{manager_id}")
 	public void deleteManager(@PathVariable("manager_id") Long manager_id) throws ResourceNotFound {
-		managerService.deleteById(manager_id) ;
+		managerService.deleteManagerById(manager_id) ;
 	}
 	
 	@GetMapping("/getmanager/{manager_id}")
@@ -48,7 +48,7 @@ public class ManagerController {
 	
 	@PutMapping("/updatemanager/{manager_id}")
 	public String Update(@RequestBody Manager manager,@PathVariable("manager_id") Long manager_id) throws ResourceNotFound {
-		return managerService.update(manager, manager_id) + " Manager updated successfully";
+		return managerService.managerupdate(manager, manager_id) + " Manager updated successfully";
 	}
 
 }

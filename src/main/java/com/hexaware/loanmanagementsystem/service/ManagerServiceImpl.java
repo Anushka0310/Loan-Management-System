@@ -1,11 +1,15 @@
 package com.hexaware.loanmanagementsystem.service;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hexaware.loanmanagementsystem.entity.Manager;
+import com.hexaware.loanmanagementsystem.exception.ResourceNotFound;
 import com.hexaware.loanmanagementsystem.repository.ManagerRepository;
+
 
 @Service
 public class ManagerServiceImpl implements ManagerService {
@@ -13,13 +17,13 @@ public class ManagerServiceImpl implements ManagerService {
 	ManagerRepository managerRepo;
 
 	@Override
-	public List<Manager> findAll() {
+	public List<Manager> findAllManager() {
 		return managerRepo.findAll();
 	}
 
 	@Override
-	public Manager findById(Long manager_id) {
-		return managerRepo.findById(manager_id).get();
+	public Optional<Manager> getManagerById(Long manager_id) {
+		return null ;
 	}
 
 	@Override
@@ -28,7 +32,7 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 
 	@Override
-	public Manager save(Manager manager) {
+	public Manager save(Manager manager){
 		return managerRepo.save(manager);
 	}
 
